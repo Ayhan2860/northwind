@@ -1,0 +1,35 @@
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Ürün Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Ürün Ara">
+</div>
+<div *ngIf="filterText" class="alert alert-success">
+{{filterText | uppercase}} Aradınız
+</div>
+
+<table style="margin-top: 10px;" class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Ürün No</th>
+        <th scope="col">Kategori No</th>
+        <th scope="col">Ürün Adı</th>
+        <th scope="col">Fiyat</th>
+        <th>Kdv + Fiyat</th>
+        <th scope="col">Stok Adedi</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products | filterpipe:filterText">
+      
+        <td>{{product.productId}}</td>
+        <td> {{product.categoryId}}</td>
+        <td>{{product.productName | uppercase}}</td>
+        <td>{{product.unitPrice | currency}}</td>
+        <td>{{product.unitPrice | vatAdded:10 | currency}}</td>
+        <td>{{product.unitsInStock}}</td>
+        <td><button (click)="addToCart(product)" type="button" class="btn btn-success btn-xs">Sepete Ekle</button></td>
+      </tr>
+      
+    </tbody>
+  </table>

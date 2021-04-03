@@ -1,0 +1,13 @@
+<ul style="margin-top: 10px;" class="list-group">
+  <li [class]="getAllCurrentClass()"
+  routerLink="/products"
+  (click)="setCurrent()"
+
+  >Tüm Ürünler</li>
+    <li 
+    routerLink="/products/category/{{category.categoryId}}"
+    (click)="setCurrentCategory(category)"
+    *ngFor="let category of categories"
+    [class]="getCurrentClass(category)" style="cursor: pointer;" >{{category.categoryName}}</li>
+
+  </ul>
