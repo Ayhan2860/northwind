@@ -37,7 +37,6 @@ export class CategoryComponent implements OnInit {
     }
   }
 
-
   
   getAllCurrentClass(){
     if (!this.currentCategory) {
